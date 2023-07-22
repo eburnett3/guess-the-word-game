@@ -54,6 +54,7 @@ const makeGuess = function (guess) {
   } else {
     guessedLetters.push(guess);
     console.log(guessedLetters);
+    updateGuessesRemaining(guess);
     showGuessedLetters();
     updateWordInProgress(guessedLetters);
   }
@@ -91,6 +92,14 @@ const updateGuessesRemaining = function (guess) {
     remainingGuesses -= 1;
   } else {
     message.innerText = `Great guess! The word does has a ${guess}.`;
+  }
+
+  if (remainingGuesses === 0) {
+    message.innerText = `Game Over! The word was <span class="highlight">${word}</span>.`;
+  } else if (remainingGuesses === 1) {
+    remainingGuessesSpan.innerText = `ONE guess remaining!`;
+  } else {
+    remainingGuessesSpan.innerText = `${remainingGuesses} guesses left`;
   }
 };
 
