@@ -7,14 +7,14 @@ const remainingGuessesSpan = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 
-const word = "magnolia";
+let word = "magnolia";
 const guessedLetters = [];
-const remainingGuesses = 8;
+let remainingGuesses = 8;
 
 const placeholder = function (word) {
   const placeholderLetters = [];
   for (const letter of word) {
-    console.log(letter);
+    //console.log(letter);
     placeholderLetters.push("●");
   }
   wordInProgress.innerText = placeholderLetters.join("");
@@ -38,7 +38,7 @@ const validateInput = function (input) {
   const acceptedLetter = /[a-zA-Z]/;
   if (input.length === 0) {
     message.innerText = "Please, enter a letter";
-  } else if (input.lenth > 1) {
+  } else if (input.length > 1) {
     message.innerText = "Only enter one letter at a time";
   } else if (!input.match(acceptedLetter)) {
     message.innerText = "Please enter a letter from A to Z";
